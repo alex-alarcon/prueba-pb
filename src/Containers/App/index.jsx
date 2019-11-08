@@ -1,29 +1,19 @@
 import React from 'react';
 
-import logo from '../../logo.svg';
 import './App.css';
 
+import useApi from '../../hooks/useApi';
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit
-          <code>src/App.js</code>
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [data, isLoading, error] = useApi();
+
+  if (isLoading) return <p>Loading..</p>;
+
+  if (!isLoading && error) return <p>Something went wrong!</p>;
+
+  if (!isLoading && data !== null) return <pre>{JSON.stringify(data)}</pre>;
+
+  return null;
 }
 
 export default App;
