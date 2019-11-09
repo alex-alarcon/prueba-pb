@@ -5,11 +5,12 @@ import './App.css';
 import useApi from '../../hooks/useApi';
 
 import Unit from '../../Components/Unit';
+import Loader from '../../Components/Loader';
 
 function App() {
   const [data, isLoading, error] = useApi();
 
-  if (isLoading) return <p>Loading..</p>;
+  if (isLoading) return <Loader />;
 
   if (!isLoading && error) return <p>Something went wrong!</p>;
 
