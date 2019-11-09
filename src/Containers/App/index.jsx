@@ -4,6 +4,8 @@ import './App.css';
 
 import useApi from '../../hooks/useApi';
 
+import Unit from '../../Components/Unit';
+
 function App() {
   const [data, isLoading, error] = useApi();
 
@@ -11,7 +13,9 @@ function App() {
 
   if (!isLoading && error) return <p>Something went wrong!</p>;
 
-  if (!isLoading && data !== null) return <pre>{JSON.stringify(data)}</pre>;
+  if (!isLoading && data !== null) {
+    return data.units.map(unitData => <Unit unit={unitData} />);
+  }
 
   return null;
 }
