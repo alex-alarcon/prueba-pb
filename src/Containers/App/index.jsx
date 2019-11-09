@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import './App.css';
 
@@ -17,7 +17,7 @@ function App() {
     return (
       <div className="grid bg-gray-100">
         {data.units.map(unitData => (
-          <Unit unit={unitData} />
+          <Unit key={unitData.id} unit={unitData} />
         ))}
       </div>
     );

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import icons from '../../utils/icons';
 
@@ -10,5 +11,10 @@ function Pill({ icon, text }) {
     </span>
   );
 }
+
+Pill.propTypes = {
+  icon: PropTypes.string.isRequired,
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+};
 
 export default Pill;

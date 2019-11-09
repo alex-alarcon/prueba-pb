@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import colors from '../../utils/colors';
 
@@ -27,5 +28,14 @@ function Unit({ unit: { name, age, description, cost } }) {
     </div>
   );
 }
+
+Unit.propTypes = {
+  unit: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    age: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    cost: PropTypes.shape({}).isRequired,
+  }).isRequired,
+};
 
 export default Unit;
