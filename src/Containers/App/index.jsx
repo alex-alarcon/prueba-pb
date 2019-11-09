@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import './App.css';
 
@@ -14,7 +14,13 @@ function App() {
   if (!isLoading && error) return <p>Something went wrong!</p>;
 
   if (!isLoading && data !== null) {
-    return data.units.map(unitData => <Unit unit={unitData} />);
+    return (
+      <div className="grid bg-gray-100">
+        {data.units.map(unitData => (
+          <Unit unit={unitData} />
+        ))}
+      </div>
+    );
   }
 
   return null;
